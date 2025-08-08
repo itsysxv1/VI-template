@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="VI BOT Studio - Next-Generation Discord Bot Development Platform with Visual Builders and Real-time Management">
+  <meta name="keywords" content="Discord Bot, Bot Development, Discord.js, React, Electron, Bot Management">
+  <meta name="author" content="VI BOT Studio Team">
+  
+  <!-- Page Title -->
+  <title>VI BOT Studio — Next-Gen Dashboard</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  
+  <!-- Google Fonts - Inter for modern typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Three.js Library and Extensions for 3D Background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r155/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r155/examples/js/controls/OrbitControls.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r155/examples/js/postprocessing/EffectComposer.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r155/examples/js/postprocessing/UnrealBloomPass.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r155/examples/js/loaders/FontLoader.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r155/examples/js/geometries/TextGeometry.min.js"></script>
+</head>
+<body>
+  <!-- 3D Background Canvas -->
+  <canvas id="bg3d" aria-hidden="true"></canvas>
+
+  <!-- Main Application Container -->
+  <div class="app">
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="nav-content">
+        
+        <!-- Brand/Logo Section -->
+        <div class="brand">
+          <div class="logo-shine" aria-label="VI BOT Studio">VI BOT STUDIO</div>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="nav-links" role="menubar">
+          <a href="#features" class="nav-link" role="menuitem">Features</a>
+          <a href="#docs" class="nav-link" role="menuitem">Documentation</a>
+          <a href="#stats" class="nav-link" role="menuitem">Analytics</a>
+          <a href="#download" class="nav-link" role="menuitem">Download</a>
+        </div>
+        
+        <!-- Theme Selector -->
+        <div class="theme-selector" role="group" aria-label="Theme selection">
+          <div class="theme-display" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+            <div class="theme-preview" aria-hidden="true"></div>
+            <span class="theme-name">Blood Red</span>
+          </div>
+          <div class="theme-dropdown" role="menu">
+            <button type="button" class="theme-option" data-theme="red" role="menuitem">
+              <div class="theme-color red" aria-hidden="true"></div>
+              <span>Blood Red</span>
+            </button>
+            <button type="button" class="theme-option" data-theme="gold" role="menuitem">
+              <div class="theme-color gold" aria-hidden="true"></div>
+              <span>Divine Gold</span>
+            </button>
+            <button type="button" class="theme-option" data-theme="blue" role="menuitem">
+              <div class="theme-color blue" aria-hidden="true"></div>
+              <span>Icy Blue</span>
+            </button>
+            <button type="button" class="theme-option" data-theme="purple" role="menuitem">
+              <div class="theme-color purple" aria-hidden="true"></div>
+              <span>Mystic Purple</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content" role="main">
+      <!-- Hero Section -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <h1 class="hero-title" id="hero-title">
+            <span class="letter-shine" aria-hidden="true">V</span>
+            <span class="letter-shine" aria-hidden="true">I</span>
+            <span class="letter-shine" aria-hidden="true">&nbsp;</span>
+            <span class="letter-shine" aria-hidden="true">B</span>
+            <span class="letter-shine" aria-hidden="true">O</span>
+            <span class="letter-shine" aria-hidden="true">T</span>
+            <span class="letter-shine" aria-hidden="true">&nbsp;</span>
+            <span class="letter-shine" aria-hidden="true">S</span>
+            <span class="letter-shine" aria-hidden="true">T</span>
+            <span class="letter-shine" aria-hidden="true">U</span>
+            <span class="letter-shine" aria-hidden="true">D</span>
+            <span class="letter-shine" aria-hidden="true">I</span>
+            <span class="letter-shine" aria-hidden="true">O</span>
+          </h1>
+          <p class="hero-subtitle">Next-Generation Discord Bot Development Platform</p>
+          <!-- Technology Badges -->
+          <div class="hero-badges" role="group" aria-label="Technologies used">
+            <span class="badge">React</span>
+            <span class="badge">Electron</span>
+            <span class="badge">Discord.js</span>
+            <span class="badge">Three.js</span>
+            <span class="badge">Real-time</span>
+          </div>
+          
+          <!-- Call to Action Buttons -->
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="scrollToSection('features')">Get Started</button>
+            <button class="btn-secondary" onclick="openDemo()">View Demo</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section id="features" class="features" aria-labelledby="features-title">
+        <h2 class="section-title" id="features-title">Core Features</h2>
+        <div class="features-grid">
+          
+          <!-- Bot Management Feature -->
+          <div class="feature-card" tabindex="0">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <h3>Bot Management</h3>
+            <p>Complete Discord bot control and management with real-time status monitoring</p>
+          </div>
+          
+          <!-- Visual Builders Feature -->
+          <div class="feature-card" tabindex="0">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                <polyline points="3.27,6.96 12,12.01 20.73,6.96"/>
+                <line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
+            </div>
+            <h3>Visual Builders</h3>
+            <p>Embed and component builders with live preview and code generation</p>
+          </div>
+          
+          <!-- Server Management Feature -->
+          <div class="feature-card" tabindex="0">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/>
+                <path d="M12 12v9"/>
+                <path d="m8 17 4 4 4-4"/>
+              </svg>
+            </div>
+            <h3>Server Management</h3>
+            <p>Manage bot across multiple Discord servers with advanced controls</p>
+          </div>
+          
+          <!-- Modern Tech Stack Feature -->
+          <div class="feature-card" tabindex="0">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12l2 2 4-4"/>
+                <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"/>
+                <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"/>
+                <path d="M12 3c0 1-1 3-3 3s-3-2-3-3 1-3 3-3 3 2 3 3"/>
+                <path d="M12 21c0-1 1-3 3-3s3 2 3 3-1 3-3 3-3-2-3-3"/>
+              </svg>
+            </div>
+            <h3>Modern Tech Stack</h3>
+            <p>Built with React, Electron, and Discord.js for maximum performance</p>
+          </div>
+          
+          <!-- Real-time Updates Feature -->
+          <div class="feature-card" tabindex="0">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </div>
+            <h3>Real-time Updates</h3>
+            <p>Live bot status and performance monitoring with instant notifications</p>
+          </div>
+          
+          <!-- Security Feature -->
+          <div class="feature-card" tabindex="0">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3>Secure & Reliable</h3>
+            <p>Enterprise-grade security and stability for production environments</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Statistics Section -->
+      <section id="stats" class="stats" aria-labelledby="stats-title">
+        <h2 class="section-title" id="stats-title">Live Statistics</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number" data-target="10500" aria-label="Active Users">0</div>
+            <div class="stat-label">Active Users</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="50000" aria-label="Lines of Code">0</div>
+            <div class="stat-label">Lines of Code</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="500" aria-label="GitHub Stars">0</div>
+            <div class="stat-label">GitHub Stars</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="2000" aria-label="Discord Members">0</div>
+            <div class="stat-label">Discord Members</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="99.9" aria-label="Uptime Percentage">0</div>
+            <div class="stat-label">Uptime %</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="24" aria-label="Support Hours">0</div>
+            <div class="stat-label">Support Hours</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Documentation Section -->
+      <section id="docs" class="docs" aria-labelledby="docs-title">
+        <h2 class="section-title" id="docs-title">Documentation</h2>
+        <div class="docs-grid">
+          
+          <!-- About Us Documentation -->
+          <div class="doc-card" data-section="about-us" tabindex="0" role="button">
+            <div class="doc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3>About VI BOT Studio</h3>
+            <p>Learn about our mission, team, and the technology behind VI BOT Studio</p>
+            <div class="doc-content">
+              <h4>Key Features</h4>
+              <ul>
+                <li>Complete Discord bot control and management</li>
+                <li>Visual embed and component builders</li>
+                <li>Server management across multiple Discord servers</li>
+                <li>Built with React, Electron, and Discord.js</li>
+                <li>Real-time bot status monitoring</li>
+                <li>Enterprise-grade security and stability</li>
+              </ul>
+              <div class="doc-stats">
+                <div class="doc-stat">
+                  <span class="stat-value">10K+</span>
+                  <span class="stat-label">Active Users</span>
+                </div>
+                <div class="doc-stat">
+                  <span class="stat-value">50K+</span>
+                  <span class="stat-label">Lines of Code</span>
+                </div>
+                <div class="doc-stat">
+                  <span class="stat-value">500+</span>
+                  <span class="stat-label">GitHub Stars</span>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="doc-link">Read More →</a>
+          </div>
+
+          <!-- Embed Builder Documentation -->
+          <div class="doc-card" data-section="embed-builder" tabindex="0" role="button">
+            <div class="doc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <h3>Embed Builder</h3>
+            <p>Create stunning Discord embeds with visual builder and live preview</p>
+            <div class="doc-content">
+              <h4>Features</h4>
+              <ul>
+                <li>Visual embed builder with real-time preview</li>
+                <li>Color picker and theme integration</li>
+                <li>Author, footer, and timestamp controls</li>
+                <li>Image and thumbnail support</li>
+                <li>Field management with inline options</li>
+                <li>Code generation for Discord.js</li>
+              </ul>
+              <div class="code-preview">
+                <pre><code>const embed = new EmbedBuilder()
+  .setTitle("Welcome!")
+  .setDescription("This embed was created with VI BOT Studio")
+  .setColor("#0099ff");</code></pre>
+              </div>
+            </div>
+            <a href="#" class="doc-link">Read More →</a>
+          </div>
+
+          <!-- Component Builder Documentation -->
+          <div class="doc-card" data-section="component-builder" tabindex="0" role="button">
+            <div class="doc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <line x1="9" y1="9" x2="15" y2="9"/>
+                <line x1="9" y1="12" x2="15" y2="12"/>
+                <line x1="9" y1="15" x2="15" y2="15"/>
+              </svg>
+            </div>
+            <h3>Component Builder</h3>
+            <p>Build interactive Discord components like buttons, selects, and modals</p>
+            <div class="doc-content">
+              <h4>Component Types</h4>
+              <ul>
+                <li>Action Row containers</li>
+                <li>Button components with styles</li>
+                <li>Select menus with options</li>
+                <li>Text input modals</li>
+                <li>Custom ID management</li>
+                <li>Event handling setup</li>
+              </ul>
+              <div class="code-preview">
+                <pre><code>const row = new ActionRowBuilder()
+  .addComponents(
+    new ButtonBuilder()
+      .setLabel("Click me!")
+      .setStyle(ButtonStyle.Primary)
+  );</code></pre>
+              </div>
+            </div>
+            <a href="#" class="doc-link">Read More →</a>
+          </div>
+
+          <!-- Server Management Documentation -->
+          <div class="doc-card" data-section="manage-servers" tabindex="0" role="button">
+            <div class="doc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/>
+                <path d="M12 12v9"/>
+                <path d="m8 17 4 4 4-4"/>
+              </svg>
+            </div>
+            <h3>Server Management</h3>
+            <p>Manage your bot across multiple Discord servers with advanced controls</p>
+            <div class="doc-content">
+              <h4>Management Features</h4>
+              <ul>
+                <li>Multi-server bot deployment</li>
+                <li>Server-specific configurations</li>
+                <li>Permission management</li>
+                <li>Channel and role controls</li>
+                <li>Server analytics and insights</li>
+                <li>Backup and restore functionality</li>
+              </ul>
+            </div>
+            <a href="#" class="doc-link">Read More →</a>
+          </div>
+
+          <!-- FAQ Documentation -->
+          <div class="doc-card" data-section="faq" tabindex="0" role="button">
+            <div class="doc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+            </div>
+            <h3>FAQ & Troubleshooting</h3>
+            <p>Common questions and solutions for VI BOT Studio users</p>
+            <div class="doc-content">
+              <h4>Common Questions</h4>
+              <ul>
+                <li>How to connect your Discord bot?</li>
+                <li>Setting up permissions correctly</li>
+                <li>Embed formatting best practices</li>
+                <li>Component interaction handling</li>
+                <li>Server deployment issues</li>
+                <li>Performance optimization tips</li>
+              </ul>
+              <div class="faq-categories">
+                <span class="faq-category">Setup</span>
+                <span class="faq-category">Troubleshooting</span>
+                <span class="faq-category">Best Practices</span>
+              </div>
+            </div>
+            <a href="#" class="doc-link">Read More →</a>
+          </div>
+
+          <!-- Resources Documentation -->
+          <div class="doc-card" data-section="resources" tabindex="0" role="button">
+            <div class="doc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14,2 14,8 20,8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10,9 9,9 8,9"/>
+              </svg>
+            </div>
+            <h3>Resources & Guides</h3>
+            <p>Comprehensive guides, tutorials, and learning resources</p>
+            <div class="doc-content">
+              <h4>Learning Resources</h4>
+              <ul>
+                <li>Getting Started Guide</li>
+                <li>Discord.js Tutorials</li>
+                <li>Advanced Bot Development</li>
+                <li>API Documentation</li>
+                <li>Community Examples</li>
+                <li>Video Tutorials</li>
+              </ul>
+            </div>
+            <a href="#" class="doc-link">Read More →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Navigation Section -->
+      <section class="navigation-section" aria-labelledby="nav-title">
+        <h2 class="section-title" id="nav-title">Quick Navigation</h2>
+        <div class="nav-buttons">
+          <button class="nav-btn" data-section="about-us" aria-label="About Us">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+            <span>About Us</span>
+          </button>
+          <button class="nav-btn" data-section="embed-builder" aria-label="Embed Builder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span>Embed Builder</span>
+          </button>
+          <button class="nav-btn" data-section="component-builder" aria-label="Component Builder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <line x1="9" y1="9" x2="15" y2="9"/>
+              <line x1="9" y1="12" x2="15" y2="12"/>
+              <line x1="9" y1="15" x2="15" y2="15"/>
+            </svg>
+            <span>Components</span>
+          </button>
+          <button class="nav-btn" data-section="manage-servers" aria-label="Server Management">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/>
+              <path d="M12 12v9"/>
+              <path d="m8 17 4 4 4-4"/>
+            </svg>
+            <span>Servers</span>
+          </button>
+          <button class="nav-btn" data-section="faq" aria-label="FAQ">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            <span>FAQ</span>
+          </button>
+          <button class="nav-btn" data-section="resources" aria-label="Resources">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14,2 14,8 20,8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10,9 9,9 8,9"/>
+            </svg>
+            <span>Resources</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Download Section -->
+      <section id="download" class="download" aria-labelledby="download-title">
+        <h2 class="section-title" id="download-title">Download Now</h2>
+        <div class="download-content">
+          <div class="download-info">
+            <h3>Ready to Build Amazing Bots?</h3>
+            <p>Join thousands of developers who trust VI BOT Studio for their Discord bot development needs. Get started today with our powerful, feature-rich platform.</p>
+            <ul class="download-features">
+              <li>✓ Free to get started</li>
+              <li>✓ No credit card required</li>
+              <li>✓ Full feature access</li>
+              <li>✓ Regular updates</li>
+              <li>✓ Community support</li>
+              <li>✓ Enterprise support</li>
+              <li>✓ Advanced analytics</li>
+            </ul>
+          </div>
+          <div class="download-actions">
+            <button class="download-btn primary" onclick="downloadApp('windows')">Download for Windows</button>
+            <button class="download-btn primary" onclick="downloadApp('macos')">Download for macOS</button>
+            <button class="download-btn secondary" onclick="openSource()">View Source</button>
+            <button class="download-btn secondary" onclick="openApiDocs()">API Docs</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer-content">
+        <p>&copy; Copyright (c) 2025 [VI]-YSX. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Documentation Pages Modal -->
+  <div id="doc-pages" class="doc-pages" role="dialog" aria-modal="true" aria-hidden="true">
+    
+    <!-- About Us Page -->
+    <div id="about-us-page" class="doc-page">
+      <div class="doc-header">
+        <button class="doc-back-btn" aria-label="Back to Dashboard">← Back to Dashboard</button>
+        <h1>About VI BOT Studio</h1>
+      </div>
+      <div class="doc-content-full">
+        <div class="doc-section">
+          <p>VI BOT Studio is a desktop app for Discord bot development. Build, manage, and deploy bots easily.</p>
+        </div>
+        <div class="doc-section">
+          <ul>
+            <li>Bot control & management</li>
+            <li>Embed & component builders</li>
+            <li>Multi-server support</li>
+            <li>Built with React, Electron, Discord.js</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Embed Builder Page -->
+    <div id="embed-builder-page" class="doc-page">
+      <div class="doc-header">
+        <button class="doc-back-btn" aria-label="Back to Dashboard">← Back to Dashboard</button>
+        <h1>Embed Builder</h1>
+      </div>
+      <div class="doc-content-full">
+        <div class="doc-section">
+          <p>Visually create Discord embeds with live preview and code export.</p>
+        </div>
+        <div class="doc-section">
+          <div class="code-block">
+            <pre><code>const embed = new EmbedBuilder()
+  .setTitle("Welcome!")
+  .setDescription("Create Discord bots easily")
+  .setColor("#0099ff");
+channel.send({ embeds: [embed] });</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Component Builder Page -->
+    <div id="component-builder-page" class="doc-page">
+      <div class="doc-header">
+        <button class="doc-back-btn" aria-label="Back to Dashboard">← Back to Dashboard</button>
+        <h1>Component Builder</h1>
+      </div>
+      <div class="doc-content-full">
+        <div class="doc-section">
+          <p>Create interactive Discord components: buttons, menus, modals.</p>
+        </div>
+        <div class="doc-section">
+          <div class="code-block">
+            <pre><code>const row = new ActionRowBuilder()
+  .addComponents(
+    new ButtonBuilder()
+      .setCustomId('primary')
+      .setLabel('Primary')
+      .setStyle(ButtonStyle.Primary)
+  );
+await interaction.reply({ content: 'Choose:', components: [row] });</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Page -->
+    <div id="faq-page" class="doc-page">
+      <div class="doc-header">
+        <button class="doc-back-btn" aria-label="Back to Dashboard">← Back to Dashboard</button>
+        <h1>FAQ</h1>
+      </div>
+      <div class="doc-content-full">
+        <div class="doc-section">
+          <div class="faq-item">
+            <h3>How do I connect my bot?</h3>
+            <p>Enter your bot token in Bot Info.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Is my token secure?</h3>
+            <p>Stored locally and encrypted.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Can I manage multiple servers?</h3>
+            <p>Yes, use Server Management.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Manage Servers Page -->
+    <div id="manage-servers-page" class="doc-page">
+      <div class="doc-header">
+        <button class="doc-back-btn" aria-label="Back to Dashboard">← Back to Dashboard</button>
+        <h1>Server Management</h1>
+      </div>
+      <div class="doc-content-full">
+        <div class="doc-section">
+          <p>Control your bot across multiple servers. Configure permissions and channels per server.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resources Page -->
+    <div id="resources-page" class="doc-page">
+      <div class="doc-header">
+        <button class="doc-back-btn" aria-label="Back to Dashboard">← Back to Dashboard</button>
+        <h1>Resources</h1>
+      </div>
+      <div class="doc-content-full">
+        <div class="doc-section">
+          <div class="resource-links">
+            <a href="#" class="resource-link">Getting Started</a>
+            <a href="https://discord.js.org" class="resource-link">Discord.js Docs</a>
+            <a href="https://github.com/itsysxv1" class="resource-link">GitHub</a>
+            <a href="https://discord.gg/vihub" class="resource-link">Community</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
