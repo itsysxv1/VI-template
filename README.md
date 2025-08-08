@@ -74,7 +74,7 @@ dashbord-html/
 
 1. **Clone or Download**
    ```bash
-   git clone https://github.com/itsysxv1/vidashboard.git
+   git clone https://github.com/itsysxv1/VI-template
    cd vidashboard
    ```
 
@@ -282,7 +282,7 @@ The dashboard can be deployed to any static hosting service:
 
 1. **Fork the Repository**
    ```bash
-   git clone https://github.com/vidashboard/vidashboard.git
+   git clone https://github.com/itsysxv1/VI-template
    cd dashboard
    ```
 
@@ -334,5 +334,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **Built with ❤️ by VI-YSX**
+
 
 
